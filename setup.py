@@ -44,14 +44,14 @@ def find_package_data(where='.', package='', exclude=standard_exclude, exclude_d
     return out
 
 setup(name='docassemble.LearnerLogbook',
-      version='0.0.1',
+      version='0.1',
       description=('Logbook for SA Learner Drivers'),
-      long_description='# docassemble.LearnerLogbook\n\nLogbook for SA Learner Drivers\n\n## Author\n\nMark Ferraretto, mark@ferraretto.com\n\n',
+      long_description='# docassemble.LearnerLogbook\r\n\r\nLogbook for SA Learner Drivers\r\n\r\n## Author\r\n\r\nMark Ferraretto, mark@ferraretto.com\r\n\r\n',
       long_description_content_type='text/markdown',
       author='Mark Ferraretto',
       author_email='mark@ferraretto.com',
-      license='The MIT License (MIT)',
-      url='https://docassemble.org',
+      license='Copyright (c) 2022 Mark Ferraretto.  All Rights Reserved',
+      url='TBC',
       packages=find_packages(),
       namespace_packages=['docassemble'],
       install_requires=[],
