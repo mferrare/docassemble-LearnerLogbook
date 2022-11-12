@@ -1,0 +1,32 @@
+# This table stores the name of all the learner drivers
+# and the qualified supervising drivers
+---
+variable name: drivers_table
+use objects: True
+data:
+  - name: Grace Ferraretto
+    type: driver
+    licence: 
+  - name: Mary Ferraretto
+    type: driver
+    licence: GT5025
+  - name: Mark Ferraretto
+    type: qsd
+    licence: F00624
+---
+# Get the list of drivers to populate in the data entry
+# table.  We get the names only
+---
+code: |
+  list_of_drivers = []
+  for entry in drivers_table:
+    if entry['type'] == 'driver':
+      list_of_drivers.append(entry['name'])
+---
+# And we do the same for the QSDs
+code: |
+  list_of_qsd = []
+  for entry in drivers_table:
+    if entry['type'] == 'qsd':
+      list_of_qsd.append(entry['name'])
+---

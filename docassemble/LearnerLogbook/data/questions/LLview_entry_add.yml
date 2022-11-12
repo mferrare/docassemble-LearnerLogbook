@@ -1,0 +1,53 @@
+---
+# We use this form to enter data for each driver
+question: Add Entry
+fields:
+  - Driver: new_driver
+    datatype: radio
+    choices:
+      code: |
+        list_of_drivers
+    default: Grace
+  - Start : new_start
+    datatype: datetime
+    default: today()
+  - From: new_from
+  - To: new_to
+  - Day or Night: new_dn
+    datatype: radio
+    choices:
+      - Day: D
+      - Night: N
+    default: D
+  - Road Type: new_road_type
+    datatype: checkboxes
+    choices:
+      - Sealed: S
+      - Unsealed: U
+      - Quiet: Q
+      - Busy: B
+      - Multi-lane: ML
+  - Weather: new_weather
+    datatype: radio
+    choices:
+      - Dry
+      - Wet
+    default: Dry
+  - Traffic Density: new_traffic
+    datatype: radio
+    choices:
+      - Light: L
+      - Medium: M
+      - Heavy: H 
+    default: L
+  - Qualified Driver Name: new_qdn
+    datatype: radio
+    choices:
+      code: |
+        list_of_qsd
+    default: Mark Ferraretto
+  - End: new_end
+    datatype: datetime
+    default: today()
+    required: false
+---

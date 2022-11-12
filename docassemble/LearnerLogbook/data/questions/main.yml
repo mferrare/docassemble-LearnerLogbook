@@ -1,0 +1,24 @@
+# Main Program
+---
+include:
+  - LLmodel_entry_table.yml
+  - LLmodel_users_table.yml
+  - LLview_entry_add.yml
+  - LLview_entry.yml
+---
+# Use a menu for navigation
+mandatory: True
+code: |
+  menu_items = [
+    action_menu_item('Add Entry', 'add_entry'),
+    action_menu_item('Edit Entries', 'edit_entries'),
+    action_menu_item('Sign Entries', 'sign_entries'),
+    action_menu_item('Print Report', 'print_report')
+  ]
+---
+# Welcome screen
+mandatory: True
+question: Learner Driver Logbook
+subquestion: |
+  Select an option from the menu.
+---

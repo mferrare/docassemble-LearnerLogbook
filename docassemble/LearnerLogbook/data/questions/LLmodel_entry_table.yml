@@ -1,0 +1,45 @@
+# This contains the code for adding, deleting and modifying records in the
+# Entry table.  I'm using a DAStore with one key per entry.  The key is the
+# timestamp of the entry made in YYYYMMDDHHMM format
+---
+# Our data structures.  A single entry is saved in a DADict so let's declare that here
+objects:
+  new_entry: DAObject
+  entries_table: DAStore
+---
+# Add entry routine
+code: |
+  # Should receive a new learner driver entry and add to the dataset
+
+  # Let's set the new entry up first
+  new_entry.driver = new_driver
+  # Merge the start date and time into a single datetime
+  new_entry.start = new_start
+  new_entry.end = new_end
+  new_entry.loc_from = new_from
+  new_entry.loc_to = new_to
+  new_entry.day_night = new_dn
+  new_entry.road_type = new_road_type
+  new_entry.weather = new_weather
+  new_entry.traffic = new_traffic
+  new_entry.qdn = new_qdn
+
+  # Key is the start time
+  new_key = format_datetime(new_entry.start, 'YYYYMMDDHHmm')
+
+  # Add the key to the data store
+  entries_table.set(new_key, new_entry)
+
+  add_new_entry = True
+---
+# Get all the entries
+code: |
+  all_entries = {}
+  for a_key in entries_table.keys():
+    all_entries[a_key] = entries_table.get(a_key)
+
+  get_all_entries = True
+
+
+
+

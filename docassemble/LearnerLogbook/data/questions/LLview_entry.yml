@@ -1,0 +1,50 @@
+# Any routines to manage the display etc of entries
+---
+# What we display once an entry is added
+event: add_entry
+question: New Entry
+subquestion: |
+  %if add_new_entry:
+  The following entry has been added to your log book.
+
+  A|B
+  ---|---
+  **Driver** | ${new_driver}
+  **Time** | ${start_date} from ${start_time} to ${end_time} (${duration} mins)
+  **Road Details** | ${new_dn}, ${new_road_type}, ${new_weather}, ${new_traffic}
+  %endif
+
+buttons:
+  - Add another entry: Restart
+  - Exit: exit
+---
+# Set variables to pretty print the dates and times
+code: |
+  start_date = format_datetime(new_start, 'd/M/YYYY')
+  start_time = format_datetime(new_start, 'HH:mm')
+  end_time   = format_datetime(new_end, 'HH:mm')
+  duration   = new_end - new_start
+---
+# This should allow a user to edit their own entries only
+event: edit_entries
+question: Edit entries
+subquestion: |
+  TBC
+---
+# This should allow a driver to sign their entries and
+# a QSD to sign any unsigned entries
+event: sign_entries
+question: Sign entries
+subquestion: |
+  Driver|Where|When|Duration|Driver Signed|QSD Signed
+  ------|-----|----|--------|-------------|----------
+  %for a_key in all_entries.keys():
+  ${all_entries[a_key].driver}|From ${all_entries[a_key].loc_from} to ${all_entries[a_key].loc_to}|${format_datetime(all_entries[a_key].start, 'd/M/YYYY')}|${all_entries[a_key].end - all_entries[a_key].start}|TBC|TBC
+  %endfor
+
+---
+# This should print a report for presentation to DPTI
+event: print_report
+question: Print Report
+subquestion: |
+  TBC 
